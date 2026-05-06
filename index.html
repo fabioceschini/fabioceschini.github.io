@@ -75,13 +75,15 @@
         .screenshot-grid img:hover { transform: scale(1.02); }
 
         /* --- TABELA COMPARATIVA --- */
-        .pricing-table-container { margin-top: 50px; overflow-x: auto; }
+        .pricing-table-container { margin-top: 10px; } /* overflow-x: auto; */
         table { width: 100%; border-collapse: collapse; margin-top: 20px; }
         th, td { padding: 15px; text-align: left; border-bottom: 1px solid #eee; }
         th { background-color: #f8f9fa; color: var(--azul-dbmoney); }
         .check-yes { color: #28a745; font-size: 1.1rem; }
         .check-no { color: #dc3545; font-size: 1.1rem; }
         .limit-text { font-size: 0.85rem; color: #856404; background: #fff3cd; padding: 2px 6px; border-radius: 4px; }
+		.limit-text-green { font-size: 1.0rem; color: var(--azul-dbmoney); background: blank; padding: 10px 10px; border-radius: 8px; }
+		.limit-text-blue { font-size: 1.0rem; color: var(--azul-dbmoney); background: blank; padding: 10px 0px; border-radius: 8px; }
 
         .btn-store {
             display: block;
@@ -140,7 +142,7 @@
 
 <section class="hero" id="empresa">
     <h1>Engenharia de Software de Alta Performance</h1>
-    <p>Com mais de 23 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções desktop que respeitam sua privacidade e produtividade.</p>
+    <p>Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções desktop que respeitam sua privacidade e produtividade.</p>
 </section>
 
 <div class="product-card" id="dbmoney">
@@ -148,38 +150,45 @@
         <img src="images/dbmoney.png" alt="dbMoney">
         <div class="dbmoney-text">
             <h2>dbMoney Personal</h2>
-            <p>O <strong>dbMoney Personal</strong> une a robustez de sistemas bancários à agilidade de uma interface moderna. Desenvolvido nativamente para Windows, ele é ideal para quem exige segurança e profundidade na análise de dados.</p>
+            <p>O <strong>dbMoney Personal</strong> não é apenas mais um aplicativo de finanças; é um software de alta performance projetado para quem exige segurança, privacidade e profundidade na análise dos dados. Desenvolvido nativamente para o ecossistema Windows, ele une a robustez de sistemas bancários à agilidade de uma interface moderna e intuitiva.</p>
         </div>
     </div>
 
     <div class="about-content">
-        <p>Ao contrário de soluções baseadas em nuvem, o dbMoney prioriza a <strong>privacidade absoluta</strong>. Seus dados financeiros são sensíveis e pertencem apenas a você, permanecendo criptografados em seu computador.</p>
-        
+        <p>Ao contrário de soluções baseadas em nuvem, o dbMoney prioriza a <strong>privacidade absoluta</strong>. Seus dados financeiros são sensíveis e pertencem apenas a você, permanecendo criptografados em seu computador. O dbMoney funciona totalmente offline.</p>
+		<br>
+		<p><strong>Liberdade Financeira Sem Mensalidades</strong></p>
+		<br>
+		<p>Acreditamos que você não deve pagar para sempre para controlar o seu próprio dinheiro. O dbMoney segue o modelo clássico de software: <strong>compra única, uso vitalício.</strong></p>
+		
         <div class="feature-grid">
             <div class="feature-item">
                 <strong><i class="fas fa-microchip"></i> Performance Nativa</strong>
-                Respostas instantâneas e processamento de milhares de registros sem lentidão.
+                Respostas instantâneas mesmo com milhares de registros e cálculos complexos.
             </div>
             <div class="feature-item">
-                <strong><i class="fas fa-file-import"></i> Inteligência OFX</strong>
-                Importação automatizada com regras de categorização inteligentes.
-            </div>
+                <strong><i class="fas fa-cog"></i> Engenharia de Dados</strong>
+                Organize receitas e despesas com um sistema flexível de categorias e subcategorias independente do fluxo.
+            </div>			
             <div class="feature-item">
-                <strong><i class="fas fa-chart-pie"></i> Visualização Gold</strong>
-                Dashboards de alta fidelidade e grids potentes para insights imediatos.
+                <strong><i class="fas fa-file-import"></i> Importação e Automação</strong>
+                Importe extratos de qualquer banco e crie regras inteligentes para categorização automática.
             </div>
         </div>
     </div>
 
-    <h3 class="gallery-title">Interface do Sistema</h3>
+    <h3 class="gallery-title">Telas do App</h3>
     <div class="screenshot-grid" id="gallery">
-        <img src="images/screenshoat-01.png" alt="Tela 01" onclick="openModal(0)">
-        <img src="images/screenshoat-02.png" alt="Tela 02" onclick="openModal(1)">
-        <img src="images/screenshoat-03.png" alt="Tela 03" onclick="openModal(2)">
-        <img src="images/screenshoat-04.png" alt="Tela 04" onclick="openModal(3)">
-        <img src="images/screenshoat-05.png" alt="Tela 05" onclick="openModal(4)">
-        <img src="images/screenshoat-06.png" alt="Tela 06" onclick="openModal(5)">
-        <img src="images/screenshoat-07.png" alt="Tela 07" onclick="openModal(6)">
+        <img src="images/dbmoney_tela_01.png" alt="Tela 01" onclick="openModal(0)">
+        <img src="images/dbmoney_tela_02.png" alt="Tela 02" onclick="openModal(1)">
+        <img src="images/dbmoney_tela_03.png" alt="Tela 03" onclick="openModal(2)">
+        <img src="images/dbmoney_tela_04.png" alt="Tela 04" onclick="openModal(3)">
+        <img src="images/dbmoney_tela_05.png" alt="Tela 05" onclick="openModal(4)">
+        <img src="images/dbmoney_tela_06.png" alt="Tela 06" onclick="openModal(5)">
+        <img src="images/dbmoney_tela_07.png" alt="Tela 07" onclick="openModal(6)">
+		<img src="images/dbmoney_tela_08.png" alt="Tela 08" onclick="openModal(7)">
+		<img src="images/dbmoney_tela_09.png" alt="Tela 09" onclick="openModal(8)">
+		<img src="images/dbmoney_tela_10.png" alt="Tela 10" onclick="openModal(9)">
     </div>
 
     <h3 class="gallery-title">Planos e Versões</h3>
@@ -194,45 +203,105 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><i class="fas fa-wallet"></i> Contas Bancárias / Carteiras</td>
-                    <td><span class="limit-text">Limite de 02</span></td>
+                    <td><i class="fas fa-wallet"></i> Contas / Carteiras</td>
+                    <td><span class="limit-text">2 contas</span></td>
                     <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
                 </tr>
+                <tr>
+                    <td><i class="fas fa-th-large"></i> Categorias e Subcategorias</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-user"></i> Contatos</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-tags"></i> Marcadores</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-pie-chart"></i> Dashboards</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>				
                 <tr>
                     <td><i class="fas fa-edit"></i> Lançamentos Manuais</td>
                     <td><span class="limit-text">20 por mês</span></td>
                     <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-tags"></i> Categorias e Subcategorias</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                </tr>
-                <tr>
-                    <td><i class="fas fa-file-import"></i> Importação de Extratos (OFX)</td>
-                    <td><i class="fas fa-times-circle check-no"></i> Não disponível</td>
+                    <td><i class="fas fa-list-alt"></i> Alteração em lote</td>
+                    <td><span class="limit-text">3 execuções</span></td>
                     <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-history"></i> Backup Automático</td>
+                    <td><i class="fas fa-plus-square"></i> Múltiplos lançamentos</td>
+                    <td><span class="limit-text">3 execuções</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-clone"></i> Replicar/copiar lançamentos</td>
+                    <td><span class="limit-text">3 execuções</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-compress"></i> Unificar/conciliar lançamentos</td>
+                    <td><span class="limit-text">3 execuções</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-arrows"></i> Desmembrar lançamentos</td>
+                    <td><span class="limit-text">3 execuções</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-file-import"></i> Importação de extratos (OFX)</td>
+                    <td><span class="limit-text">3 importações</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>				
+                <tr>
+                    <td><i class="fas fa-file-excel"></i> Exportar para Excel</td>
+                    <td><span class="limit-text">5 exportações</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-code"></i> Exportar para HTML</td>
+                    <td><span class="limit-text">5 exportações</span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-history"></i> Backup automático</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Configurável</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Configurável</td>
+                </tr>
+                <tr>
+                    <td><i class="fas fa-envelope"></i> Suporte por e-mail</td>
                     <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
                     <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-headset"></i> Suporte Técnico</td>
+                    <td><i class="fas fa-thumbs-up"></i> Suporte prioritário</td>
                     <td><i class="fas fa-times-circle check-no"></i> Não</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Prioritário</td>
+                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
                 </tr>
+                <tr>
+                    <td><i class="fas fa-check-circle"></i> Preço</td>
+					<td><span class="limit-text-blue"> Gratuito</span></td>
+					<td><span class="limit-text-blue"> R$ 99,00 (único)</span></td>
+                </tr>				
             </tbody>
         </table>
     </div>
 
-    <a href="#" class="btn-store"><i class="fab fa-microsoft"></i> Adquirir na Microsoft Store</a>
+    <a href="https://apps.microsoft.com/detail/9N0PB6XG7ZQT" target="_blank" class="btn-store"><i class="fab fa-microsoft"></i> Adquirir na Microsoft Store</a>
 </div>
 
 <footer>
     <p>&copy; 2026 DevBrazil. Todos os direitos reservados.</p>
-    <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Desenvolvido com Delphi e SQL Server.</p>
+    <!-- <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.7;">Desenvolvido....</p> -->
 </footer>
 
 <!-- Modal Galeria -->
