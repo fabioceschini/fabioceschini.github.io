@@ -6,8 +6,7 @@
     <title>Descrição dbMoney</title>
     <style>
         body {
-            /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
-			font-family: 'Calibri', Tahoma, Geneva, Verdana, sans-serif;			
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             line-height: 1.6;
             color: #333;
             max-width: 1400px;
@@ -19,42 +18,76 @@
             background-color: #ffffff;
             padding: 10px;
             border-radius: 8px;
-            /* box-shadow: 0 4px 12px rgba(0,0,0,0.05); */
+            /*
+			box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 8px solid #004a99;
+			*/
         }
-        h1 {
-            color: #2B579A ; /* Azul Microsoft */
-            border-bottom: 2px solid #2B579A ;
-            padding-bottom: 10px;
-            /* font-weight: 500; */
-			font-size: 1.4em;
+        header {
+            text-align: left;
+            border-bottom: 2px solid #2B579A; /* #eee; */
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+        }
+        header h1 {
+            color: #004a99;
+            margin: 0;
+            font-size: 28px;
+            /* text-transform: uppercase; */
+            letter-spacing: 1px;
+        }
+        header p {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
         }
         h2 {
-            color: #595959;
-            margin-top: 30px;
-            font-size: 1.4em;
-        }
-        .highlight-box {
             background-color: #f0f7ff;
-            border-left: 4px solid #2B579A ;
+			color: #004a99;
+            border-left: 5px solid #004a99;
             padding: 10px;
-            margin: 20px 0;
-            font-style: italic;
+			padding-left: 15px;
+            margin-top: 35px;
+            font-size: 20px;
+        }
+        h3 {
+            color: #003366;
+            font-size: 17px;
+            margin-top: 25px;
+        }
+        pc {
+            text-align: center;
+            font-size: 15px;
+        }		
+        p, li {
+            text-align: justify;
+            font-size: 15px;
         }
         ul {
-            padding-left: 20px;
+            margin-bottom: 20px;
         }
-        li {
-            margin-bottom: 10px;
+        .highlight {
+            background-color: #eef6ff;
+            padding: 15px;
+            border-radius: 4px;
+            border: 1px dashed #004a99;
+            margin: 20px 0;
         }
-        strong {
-            color: #595959;
-        }
-        .cta {
-            text-align: center;
+        footer {
             margin-top: 40px;
-            padding: 10px;
-            background-color: #2B579A ;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .btn-print {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background-color: #004a99;
             color: white;
+            text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
         }
@@ -63,7 +96,10 @@
 <body>
 
 <div class="container">
-    <h1>dbMoney Personal: Engenharia Financeira Pessoal</h1>
+    <header>
+        <h1>dbMoney Personal</h1>
+		<pc><strong>Engenharia Financeira Pessoal</strong></pc>
+    </header>
     
     <p><strong>Assuma o controle total do seu patrimônio com a precisão de uma ferramenta profissional.</strong></p>
 
@@ -73,7 +109,7 @@
         "Seus dados financeiros são sensíveis e pertencem apenas a você. O dbMoney funciona totalmente offline."
     </div>
 
-    <h2>Por que escolher o dbMoney?</h2>
+    <h3>Por que escolher o dbMoney?</h3>
     <ul>
         <li><strong>Privacidade em Primeiro Lugar (100% Offline):</strong> Nada de nuvem, nada de rastreamento, nada de dados vazados. O dbMoney utiliza arquivos de dados local criptografado.</li>
         <li><strong>Performance Nativa:</strong> Respostas instantâneas mesmo com milhares de registros e cálculos complexos.</li>
@@ -81,7 +117,7 @@
         <li><strong>Segurança Blindada:</strong> Sistema de backup automático configurável para você nunca perder seu histórico.</li>
     </ul>
 
-    <h2>Recursos Principais:</h2>
+    <h3>Recursos Principais:</h3>
     <ul>
         <li><strong>Interface Multi-Painel:</strong> Otimizada para produtividade no desktop, utilizando componentes profissionais.</li>
         <li><strong>Dashboard Inteligente:</strong> Gráficos de alta fidelidade para insights imediatos sobre seus hábitos de consumo.</li>
@@ -92,12 +128,13 @@
 		<li><strong>Exportação Profissional:</strong> Gere relatórios em Excel, HTML e PDF baseados na sua visão personalizada.</li>
     </ul>
 
-    <h2>Liberdade Financeira Sem Mensalidades</h2>
+    <h3>Liberdade Financeira Sem Mensalidades</h3>
     <p>Acreditamos que você não deve pagar para sempre para controlar o seu próprio dinheiro. O dbMoney segue o modelo clássico de software: <strong>compra única, uso vitalício.</strong></p>
 
-    <div class="cta">
-        Experimente a precisão do dbMoney e transforme sua gestão hoje.
-    </div>
+    <footer>
+		&copy; 2026 DevBrazil<br>
+        Desenvolvido com foco em segurança e performance para o Windows 11
+    </footer>
 </div>
 
 </body>
