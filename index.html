@@ -9,7 +9,9 @@
     <style>
         :root {
             --verde-dev: #1b845b;
-            --azul-dbmoney: #004a99;
+            --azul-dbmoney: #004a99;			
+			--vermelho-dbpdf: #A75052;
+			--roxo-dbradio: #7A5B91;
             --bg-light: #f4f7f6;
             --text-dark: #333;
             --white: #ffffff;
@@ -132,7 +134,7 @@
         .limit-text { font-size: 0.75rem; color: #856404; background: #fff3cd; padding: 2px 6px; border-radius: 4px; display: inline-block; }
 		.limit-text-blue { font-weight: bold; color: var(--azul-dbmoney); }
 
-        .btn-store {
+        .btn-store-dbmoney {
             display: block;
             width: 100%;
             max-width: 350px;
@@ -147,7 +149,41 @@
             text-align: center;
             transition: background 0.3s;
         }
-        .btn-store:hover { background: #003366; }
+        .btn-store-dbmoney:hover { background: #003366; }
+
+        .btn-store-dbpdf {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 40px auto 0;
+            background: var(--vermelho-dbpdf);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .btn-store-dbpdf:hover { background: #823E40; }
+		
+        .btn-store-dbradio {
+            display: block;
+            width: 100%;
+            max-width: 350px;
+            margin: 40px auto 0;
+            background: var(--roxo-dbradio);
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .btn-store-dbradio:hover { background: #59436B; }		
 
         /* --- MODAL GALERIA --- */
         .modal {
@@ -374,7 +410,7 @@
         </table>
     </div>
 
-    <a href="https://apps.microsoft.com/detail/9N0PB6XG7ZQT" target="_blank" class="btn-store"><i class="fab fa-microsoft"></i> Disponível na Microsoft Store</a>	
+    <a href="https://apps.microsoft.com/detail/9N0PB6XG7ZQT" target="_blank" class="btn-store-dbmoney"><i class="fab fa-microsoft"></i> Disponível na Microsoft Store</a>	
 </div>
 
 <br>
@@ -399,11 +435,12 @@
         <!-- Mantendo sua lógica de imagens original -->
         <img src="images/dbpdf_tela_01.png" alt="Tela 01" onclick="openModal(0, 'gallery-dbpdf')">
         <img src="images/dbpdf_tela_02.png" alt="Tela 02" onclick="openModal(1, 'gallery-dbpdf')">
+		<img src="images/dbpdf_tela_03.png" alt="Tela 02" onclick="openModal(2, 'gallery-dbpdf')">
     </div>
 
     <div class="product-info-footer" style="text-align: center; margin-top: 30px;">
 		<span class="badge-red">100% Gratuito</span><br><br><i>(Mantido por doações voluntárias)</i><br>
-		<a href="https://apps.microsoft.com/detail/9N7H3FPQX608" target="_blank" class="btn-store" style="background: #d32f2f;"><i class="fab fa-microsoft"></i>  Disponível na Microsoft Store</a>				
+		<a href="https://apps.microsoft.com/detail/9N7H3FPQX608" target="_blank" class="btn-store-dbpdf"><i class="fab fa-microsoft"></i>  Disponível na Microsoft Store</a>
     </div>
 	
 </div>
@@ -434,7 +471,7 @@
 	
     <div class="product-info-footer" style="text-align: center; margin-top: 30px;">
         <span class="badge-purple">100% Gratuito</span><br><br><i>(Mantido por doações voluntárias)</i><br>
-        <a href="https://apps.microsoft.com/detail/9NRWV6JRPT8R" target="_blank" class="btn-store" style="background: #6a1b9a;"><i class="fab fa-microsoft"></i>  Disponível na Microsoft Store</a>
+        <a href="https://apps.microsoft.com/detail/9NRWV6JRPT8R" target="_blank" class="btn-store-dbradio"><i class="fab fa-microsoft"></i>  Disponível na Microsoft Store</a>
 		<!-- <button class="btn-store" style="background: #6a1b9a; cursor: not-allowed;" disabled><i class="fas fa-clock"></i>  Obter pela Microsoft Store</button> -->
     </div>	
 	
