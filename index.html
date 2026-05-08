@@ -56,11 +56,20 @@
         .hero h1 { font-size: 2.5rem; margin-bottom: 15px; color: var(--verde-dev); line-height: 1.1; }
         .hero p { font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto; }
 
+		/*
         .lang-selector {
             position: relative;
             display: inline-block;
             margin-left: 20px;
         }
+		*/
+		
+		.lang-selector {
+			position: relative;
+			display: flex;       /* Mudança de inline-block para flex */
+			align-items: center; /* Garante alinhamento vertical com os links */
+			margin-left: 20px;
+		}		
         
         .lang-btn {
             background: none;
@@ -393,7 +402,7 @@
 				display: flex;       /* Mudança de inline-block para flex */
 				align-items: center; /* Garante alinhamento vertical com os links */
 				margin-left: 20px;
-			}	
+			}
 
 			.lang-btn {
 				padding: 4px 8px;    /* Reduz um pouco o botão para caber melhor */
@@ -660,6 +669,8 @@
         <span class="close-contact" onclick="closeContactModal()">&times;</span>
         <h2>Enviar Mensagem</h2>
         <p>Preencha os campos abaixo e entraremos em contato em breve.</p>
+		<br>
+		<p>Caso prefira, entre em contato através do e-mail: <a href="mailto:support@devbrazil.com">support@devbrazil.com</a></p>
         
         <form id="contactForm" action="https://formsubmit.co/support@devbrazil.com" method="POST">
             <input type="text" name="name" placeholder="Seu Nome" required>
@@ -669,7 +680,7 @@
             
             <input type="text" name="_honey" style="display:none">
             
-            <button type="submit" class="btn-send">Enviar Agora</button>
+            <button type="submit" class="btn-send">Enviar</button>
         </form>
     </div>
 </div>
