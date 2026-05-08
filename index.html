@@ -25,17 +25,31 @@
             background: #fff;
             padding: 15px 5%;
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between; /* Mantém Logo na esquerda e Nav na direita */
             align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: sticky;
             top: 0;
             z-index: 1000;
         }
+		
         .logo-container { display: flex; align-items: center; gap: 12px; }
         .logo-img { width: 40px; height: 40px; }
         .brand-name { font-weight: bold; font-size: 1.3rem; color: var(--verde-dev); letter-spacing: 1px; }
-        nav a { margin-left: 15px; text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.9rem; }
+		
+        nav {
+            display: flex;
+            align-items: center; /* Centraliza verticalmente links e bandeira */
+            gap: 20px;           /* Espaçamento uniforme entre todos os itens */
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-left: 0;      /* Removemos a margem fixa para usar o gap do nav */
+        }
 
         /* --- HERO --- */
         .hero { padding: 60px 5%; text-align: center; background: linear-gradient(135deg, #fff 0%, #e6f2ed 100%); }
@@ -265,8 +279,19 @@
         /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 15px; }
-            nav { display: flex; gap: 10px; margin-top: 5px; }
-            nav a { margin: 0; }
+			.nav {
+                display: flex;
+                flex-direction: row; /* Mantém na mesma linha */
+                flex-wrap: wrap;     /* Permite quebrar linha se o celular for muito pequeno */
+                justify-content: center;
+                align-items: center;
+                gap: 12px;           /* Espaçamento entre os itens */
+            }
+        
+            .nav a {
+                margin-left: 0;      /* Remove margens fixas para não desalinhar */
+                font-size: 0.85rem;
+            }
             
             .hero { padding: 40px 5%; }
             .hero h1 { font-size: 1.8rem; }
@@ -287,14 +312,17 @@
             
             .nav-btn { font-size: 24px; padding: 10px; }
 
-            .lang-selector {
-                margin-left: 0;
-                margin-top: 10px;
-            }
-            .lang-btn {
-                width: 100%;
-                justify-content: center;
-            }			
+			.lang-selector {
+				position: relative;
+				display: flex;       /* Mudança de inline-block para flex */
+				align-items: center; /* Garante alinhamento vertical com os links */
+				margin-left: 20px;
+			}	
+
+			.lang-btn {
+				padding: 4px 8px;    /* Reduz um pouco o botão para caber melhor */
+				font-size: 0.75rem;
+			}
         }
     </style>
 </head>
