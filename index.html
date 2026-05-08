@@ -276,6 +276,82 @@
 
         footer { background: #333; color: #fff; text-align: center; padding: 30px 5%; margin-top: 50px; font-size: 0.9rem; }
 
+        /* --- MODAL DE CONTATO --- */
+        .contact-modal {
+            display: none;
+            position: fixed;
+            z-index: 3000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .contact-modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .close-contact {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #999;
+        }
+        
+        .contact-modal h2 {
+            color: var(--verde-dev);
+            margin-bottom: 10px;
+        }
+        
+        #contactForm {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        #contactForm input, #contactForm textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+        
+        #contactForm input:focus, #contactForm textarea:focus {
+            outline: none;
+            border-color: var(--verde-dev);
+            box-shadow: 0 0 5px rgba(27, 132, 91, 0.2);
+        }
+        
+        .btn-send {
+            background-color: var(--verde-dev);
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-send:hover {
+            background-color: #146645;
+        }
+
         /* --- MEDIA QUERIES --- */
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 15px; padding: 15px; }
@@ -336,7 +412,7 @@
     <nav>
         <a href="#empresa">Sobre</a>
         <a href="#empresa">Produtos</a>
-        <a href="mailto:support@devbrazil.com">Contato</a>
+		<a href="javascript:void(0)" onclick="openContactModal()">Contato</a>
 		<div class="lang-selector">
 			<button class="lang-btn"><img src="images/flag_brazil.png" alt="PT-BR"> <i class="fas fa-chevron-down"></i></button>
 			<div class="lang-dropdown">
@@ -579,6 +655,25 @@
 	
 </div>
 
+<div id="contactModal" class="contact-modal">
+    <div class="contact-modal-content">
+        <span class="close-contact" onclick="closeContactModal()">&times;</span>
+        <h2>Enviar Mensagem</h2>
+        <p>Preencha os campos abaixo e entraremos em contato em breve.</p>
+        
+        <form id="contactForm" action="https://formsubmit.co/support@devbrazil.com" method="POST">
+            <input type="text" name="name" placeholder="Seu Nome" required>
+            <input type="email" name="email" placeholder="Seu E-mail" required>
+            <input type="text" name="_subject" placeholder="Assunto">
+            <textarea name="message" rows="5" placeholder="Como podemos ajudar?" required></textarea>
+            
+            <input type="text" name="_honey" style="display:none">
+            
+            <button type="submit" class="btn-send">Enviar Agora</button>
+        </form>
+    </div>
+</div>
+
 <footer>
     <p>&copy; 2026 DevBrazil. Todos os direitos reservados.</p>
 </footer>
@@ -634,6 +729,22 @@
 		let modal = document.getElementById("myModal");
 		if (event.target == modal) { closeModal(); }
 	}
+	
+	function openContactModal() {
+	    document.getElementById("contactModal").style.display = "flex";
+	}
+	
+	function closeContactModal() {
+	    document.getElementById("contactModal").style.display = "none";
+	}
+	
+	// Fechar se clicar fora do conteúdo
+	window.onclick = function(event) {
+	    let modal = document.getElementById("contactModal");
+	    if (event.target == modal) {
+	        closeContactModal();
+	    }
+	}	
 </script>
 
 </body>
