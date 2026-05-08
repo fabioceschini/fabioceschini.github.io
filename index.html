@@ -112,14 +112,9 @@
             border-radius: 8px;
         }
         
-        .lang-selector:hover .lang-dropdown {
-            display: block;
-        }
-        
-        .lang-dropdown img, .lang-btn img {
-            width: 18px;
-            height: 18px;
-        }
+		.lang-selector.active .lang-dropdown {
+			display: block;
+		}
 
         /* --- CONTAINER PRODUTO --- */
 		.product-card {
@@ -403,6 +398,10 @@
 				align-items: center; /* Garante alinhamento vertical com os links */
 				margin-left: 20px;
 			}
+			
+			.lang-selector:hover .lang-dropdown {
+				display: block;
+			}			
 
 			.lang-btn {
 				padding: 4px 8px;    /* Reduz um pouco o botão para caber melhor */
@@ -423,12 +422,15 @@
         <a href="#empresa">Produtos</a>
 		<a href="javascript:void(0)" onclick="openContactModal()">Contato</a>
 		<div class="lang-selector">
-			<button class="lang-btn"><img src="images/flag_brazil.png" alt="PT-BR"> <i class="fas fa-chevron-down"></i></button>
-			<div class="lang-dropdown">
-				<a href="index.html"><img src="images/flag_brazil.png"> Português</a>
-				<a href="index_en.html"><img src="images/flag_usa.png"> English</a>
-			</div>
-		</div>		
+		    <button class="lang-btn" id="langBtn" onclick="toggleLangMenu(event)">
+		        <img src="images/flag_brazil.png" alt="PT-BR"> 
+		        <i class="fas fa-chevron-down"></i>
+		    </button>
+		    <div class="lang-dropdown" id="langDropdown">
+		        <a href="index.html"><img src="images/flag_brazil.png"> Português</a>
+		        <a href="index_en.html"><img src="images/flag_usa.png"> English</a>
+		    </div>
+		</div>
     </nav>
 </header>
 
@@ -755,7 +757,22 @@
 	    if (event.target == modal) {
 	        closeContactModal();
 	    }
-	}	
+	}
+
+	function toggleLangMenu(event) {
+	    // Impede que o clique feche o modal de contato ou execute outras ações
+	    event.stopPropagation();
+	    const selector = document.querySelector('.lang-selector');
+	    selector.classList.toggle('active');
+	}
+	
+	// Fecha o menu de idiomas se o usuário clicar fora dele
+	window.addEventListener('click', function(event) {
+	    const selector = document.querySelector('.lang-selector');
+	    if (selector && !selector.contains(event.target)) {
+	        selector.classList.remove('active');
+	    }
+	});	
 </script>
 
 </body>
