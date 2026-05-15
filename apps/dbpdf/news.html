@@ -13,6 +13,9 @@
             padding: 0px;
             text-align: center;
         }
+		
+		strong { color: #A95153; }
+		
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -46,13 +49,104 @@
 </head>
 <body>
     <div class="container">
-        <p>Esse aplicativo foi desenvolvido sob medida para usuários que buscam uma alternativa leve aos leitores tradicionais.</p>       
+        <p data-pt="Esse aplicativo foi desenvolvido sob medida para usuários que buscam uma alternativa leve aos leitores tradicionais."
+		   data-en="This app was developed specifically for users seeking a lightweight alternative to traditional e-readers.">
+		</p>
 		
-		<p>Totalmente focado em performance e produtividade.</p>
+		<p data-pt="Totalmente focado em performance e produtividade."
+		   data-en="Completely focused on performance and productivity.">
+		</p>
 
-		<p>Se você gostou do projeto, considere <span class="bold-red">apoiar</span> sua manutenção e desenvolvimento com uma pequena doação.</p>
+		<p data-pt="Se você gostou do projeto, considere <strong>apoiar</strong> sua manutenção e desenvolvimento com uma pequena doação."
+		   data-en="If you enjoyed the project, please consider <strong>supporting</strong> its maintenance and development with a small donation.">
+		</p>
         
-		<p class="bold">Seu gesto ajuda a manter o projeto vivo.</p>
+		<p data-pt="<strong>Seu gesto ajuda a manter o projeto vivo.</strong>"
+		   data-en="<strong>Your gesture helps keep the project alive.</strong>">
+		</p>
     </div>
+	
+<script>
+	
+	function updateContent() {
+
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			const texto = el.getAttribute('data-' + currentLang);
+			if (texto) {
+				// USAR innerHTML para que o navegador processe o <strong>
+				el.innerHTML = texto;
+			}
+		});
+		
+		// Atualiza placeholders
+		document.querySelectorAll('[data-placeholder-pt]').forEach(el => {
+			const texto = el.getAttribute('data-placeholder-' + currentLang);
+
+			if (texto) {
+				el.placeholder = texto;
+			}
+		});		
+		
+		// Atualiza o texto do botão de troca
+		document.querySelectorAll('.lang-text').forEach(span => {
+			span.innerText = (currentLang === 'pt') ? 'EN' : 'PT';
+		});
+	}
+
+	function changeLanguage(lang) {	
+		currentLang = lang;
+
+		// Atualiza textos
+		updateContent();
+		}
+	
+	window.onload = function() {
+		// Idioma padrão
+		currentLang = 'pt';
+		
+		// Detecta idioma do navegador
+		const browserLang = navigator.language || navigator.userLanguage;
+		
+		if (browserLang.startsWith('en')) {
+			currentLang = 'en';
+		}
+		
+		// Verifica URL (?lang=en ou #en)
+		checkURLForLanguage();
+		
+		// Atualiza conteúdo
+		changeLanguage(currentLang);		
+	}
+
+	// Executa assim que o site carregar
+    document.addEventListener("DOMContentLoaded", checkURLForLanguage);
+
+	function scrollToSection(id) {
+
+		const element = document.getElementById(id);
+
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+	}
+	
+	// Função que lê o idioma da URL
+    function checkURLForLanguage() {	
+		const hash = window.location.hash.replace('#', '');		
+		const urlParams = new URLSearchParams(window.location.search);		
+		const langParam = urlParams.get('lang');
+		
+		if (hash === 'en' || hash === 'pt') {		
+			currentLang = hash;		
+		} else if (langParam === 'en' || langParam === 'pt') {		
+			currentLang = langParam;
+		}		
+    }
+	
+</script>	
+	
 </body>
 </html>
