@@ -31,6 +31,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+			backdrop-filter: blur(10px);
         }
 		
         .logo-container { display: flex; align-items: center; gap: 12px; }
@@ -39,16 +40,52 @@
 		
         nav {
             display: flex;
-            align-items: center; /* Centraliza verticalmente links e bandeira */
-            gap: 20px;           /* Espaçamento uniforme entre todos os itens */
+            align-items: center;
+            gap: 12px;
         }
         
         nav a {
+            position: relative;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-left: 0;      /* Removemos a margem fixa para usar o gap do nav */
+            font-size: 0.95rem;
+            padding: 10px 8px;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+        }
+        
+        /* Hover elegante */
+        nav a:hover {
+            background: rgba(27, 132, 91, 0.08);
+            color: var(--verde-dev);
+        }
+        
+        /* Linha animada inferior */
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 6px;
+            width: 0%;
+            height: 2px;
+            background: var(--verde-dev);
+            transition: width 0.25s ease;
+            border-radius: 2px;
+        }
+        
+        nav a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        /* Botão ativo */
+        nav a.active {
+            background: var(--verde-dev);
+            color: white;
+        }
+        
+        nav a.active::after {
+            display: none;
         }
 
         /* --- HERO --- */
@@ -375,9 +412,9 @@
         <img src="images/devbrazil.png" alt="DevBrazil Logo" class="logo-img">
         <span class="brand-name">DEVBRAZIL</span>
     </div>
-    <nav>
-		<a href="#empresa" onclick="scrollToSection('home')" data-pt="Sobre" data-en="Home">Home</a>
-		<a href="#empresa" onclick="scrollToSection('produtos')" data-pt="Produtos" data-en="Products">Produtos</a>
+    <nav>	
+		<a href="javascript:void(0)" onclick="scrollToSection('empresa')" data-pt="Home" data-en="Home">Home</a>
+		<a href="javascript:void(0)" onclick="scrollToSection('dbmoney')" data-pt="Produtos" data-en="Products">Produtos</a>
 		<a href="javascript:void(0)" onclick="openContactModal()" data-pt="Contato" data-en="Contact">Contato</a>
 	
 		<div class="lang-selector" id="langSelector">
@@ -396,10 +433,17 @@
 
 <section class="hero" id="empresa">
     <h1 data-pt="Engenharia de Software de Alta Performance" data-en="High Performance Software Engineering">Engenharia de Software de Alta Performance</h1>
-    <p> Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções que respeitam sua privacidade e produtividade.</p>
-	
+    
+	<p data-pt="Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções que respeitam sua privacidade e produtividade."
+	   data-en="With over 20 years of experience in mission-critical systems, DevBrazil combines technical expertise with innovation to create solutions that respect your privacy and productivity.">
+	   Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções que respeitam sua privacidade e produtividade.
+	</p>
+
 	<br>
-	<p><strong>Junte-se a nós. Estamos presentes em mais de 100 mercados e territórios.</strong></p>
+	<p data-pt="<strong>Junte-se a nós. Estamos presentes em mais de 100 mercados e territórios.</strong>"
+	   data-en="<strong>Join us. We are present in over 100 markets and territories.</strong>">
+		<strong>Junte-se a nós. Estamos presentes em mais de 100 mercados e territórios.</strong>
+	</p>
 </section>
 
 <div class="product-nav">
@@ -443,8 +487,8 @@
 
     <h3 class="gallery-title">Capturas de tela</h3>
     <div class="screenshot-grid" id="gallery-dbmoney">
-        <!-- Mantendo sua lógica de imagens original -->
-        <img src="products/dbmoney/br/images/screenshoat-01.png" alt="Screen 01" onclick="openModal(00, 'gallery-dbmoney')">
+        <!-- Mantendo sua lógica de imagens original -->	
+		<img src="products/dbmoney/br/images/screenshoat-01.png" alt="Screen 01" onclick="openModal(00, 'gallery-dbmoney')">
         <img src="products/dbmoney/br/images/screenshoat-02.png" alt="Screen 02" onclick="openModal(01, 'gallery-dbmoney')">
         <img src="products/dbmoney/br/images/screenshoat-03.png" alt="Screen 03" onclick="openModal(02, 'gallery-dbmoney')">
         <img src="products/dbmoney/br/images/screenshoat-04.png" alt="Screen 04" onclick="openModal(03, 'gallery-dbmoney')">
@@ -469,7 +513,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><i class="fas fa-wallet"></i> Contas / Carteiras</td>
+                    <td><i class="fas fa-wallet"></i><a data-pt=" Contas / Carteiras" data-en=" Accounts / Wallets"> Contas / Carteiras</a></td>
                     <td><span class="limit-text">2 contas</span></td>
                     <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
                 </tr>
@@ -637,7 +681,8 @@
 <div id="contactModal" class="contact-modal">
     <div class="contact-modal-content">
         <span class="close-contact" onclick="closeContactModal()">&times;</span>
-        <h2>Enviar Mensagem</h2>
+        <h2 data-pt="Enviar Mensagem" data-en="Send Message">Enviar Mensagem</h2>		
+				
         <p>Preencha os campos abaixo e entraremos em contato em breve.</p>
 		<br>
 		<p>Caso prefira, entre em contato através do e-mail: <a href="mailto:support@devbrazil.com">support@devbrazil.com</a></p>
@@ -669,48 +714,73 @@
 <script>
 	let currentImageIndex = 0;
 	let currentGalleryImages = [];
-	let currentLang = 'pt';
+	let currentLang = 'en';
 
-function updateContent() {
-    // Atualiza todos os elementos que possuem os atributos de tradução
-    document.querySelectorAll('[data-pt]').forEach(el => {
-        el.innerText = el.getAttribute('data-' + currentLang);
-    });
+	function updateContent() {
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			const texto = el.getAttribute('data-' + currentLang);
+			if (texto) {
+				// USAR innerHTML para que o navegador processe o <strong>
+				el.innerHTML = texto;
+			}
+		});
+		
+		// Atualiza o texto do botão de troca
+		document.querySelectorAll('.lang-text').forEach(span => {
+			span.innerText = (currentLang === 'pt') ? 'EN' : 'PT';
+		});
+	}
 
-    // Atualiza o texto dos botões (EN/PT)
-    document.querySelectorAll('.lang-text').forEach(span => {
-        span.innerText = (currentLang === 'pt') ? 'EN' : 'PT';
-    });
+	function toggleLangMenu(event) {
+		event.stopPropagation();
+		document.getElementById('langSelector').classList.toggle('active');
+	}
 
-    // Opcional: Altera o atributo lang do HTML para acessibilidade
-    document.documentElement.lang = (currentLang === 'pt') ? 'pt-br' : 'en';
-}
-
-function toggleLangMenu(event) {
-    event.stopPropagation();
-    document.getElementById('langSelector').classList.toggle('active');
-}
-
-function changeLanguage(lang) {
-    currentLang = lang;
+	function changeLanguage(lang) {
+		currentLang = lang;
     
-    // 1. Fecha o menu
-    document.getElementById('langSelector').classList.remove('active');
+		// 1. Fecha o menu
+		document.getElementById('langSelector').classList.remove('active');
     
-    // 2. Atualiza a bandeira do botão principal
-    const flagImg = lang === 'pt' ? 'images/flag_brazil.png' : 'images/flag_usa.png';
-    document.getElementById('currentFlag').src = flagImg;
+		// 2. Atualiza a bandeira do botão principal
+		const flagImg = lang === 'pt' ? 'images/flag_brazil.png' : 'images/flag_usa.png';
+		document.getElementById('currentFlag').src = flagImg;
 
-    // 3. Troca os textos (Requer que você use data-pt e data-en nos elementos)
-    document.querySelectorAll('[data-pt]').forEach(el => {
-        el.innerText = el.getAttribute('data-' + lang);
-    });
-}
+		// 3. Troca os textos (Requer que você use data-pt e data-en nos elementos)
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			el.innerHTML = el.getAttribute('data-' + lang);
+			
+		updateImagesByLanguage(lang);
+		});
+	}
+	
+	function updateImagesByLanguage(lang) {
 
-// Fecha o menu se clicar em qualquer outro lugar da tela
-window.onclick = function() {
-    document.getElementById('langSelector').classList.remove('active');
-}
+		const folder = (lang === 'pt') ? 'br' : 'en';
+
+		document.querySelectorAll('.screenshot-grid img').forEach(img => {
+
+			img.src = img.src
+				.replace('/br/', '/' + folder + '/')
+				.replace('/en/', '/' + folder + '/');
+
+		});
+	}	
+
+	// Fecha o menu se clicar em qualquer outro lugar da tela
+	window.onclick = function() {
+		document.getElementById('langSelector').classList.remove('active');
+	}
+
+	window.onload = function() {
+		// Verifica se o idioma do navegador começa com 'en'
+		const browserLang = navigator.language || navigator.userLanguage;
+    
+		if (browserLang.startsWith('en')) {
+			currentLang = 'en';
+			updateContent();
+		}
+	}
 
 	// Função para abrir o modal baseada na galeria específica
 	function openModal(index, galleryId) {
@@ -767,7 +837,20 @@ window.onclick = function() {
 	    if (event.target == modal) {
 	        closeContactModal();
 	    }
+	}
+	
+	function scrollToSection(id) {
+
+		const element = document.getElementById(id);
+
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
 	}	
+	
 </script>
 
 </body>
