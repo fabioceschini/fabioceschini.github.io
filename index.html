@@ -676,8 +676,8 @@
     </div>
 	
 	<div class="about-content" style="color: var(--roxo-dbradio)">
-		<a data-pt="Este aplicativo foi desenvolvido por amantes de webrádios ao redor do mundo."
-		   data-en="This app was developed by web radio enthusiasts around the world.">
+		<a data-pt="Este aplicativo foi desenvolvido por amantes de rádios ao redor do mundo."
+		   data-en="This app was developed by radio lovers around the world.">
 		</a>
 	</div>
 
@@ -773,25 +773,7 @@
 		document.getElementById('langSelector').classList.toggle('active');
 	}
 
-	function changeLanguage(lang) {
-		/*
-		currentLang = lang;
-    
-		// 1. Fecha o menu
-		document.getElementById('langSelector').classList.remove('active');
-    
-		// 2. Atualiza a bandeira do botão principal
-		const flagImg = lang === 'pt' ? 'images/flag_brazil.png' : 'images/flag_usa.png';
-		document.getElementById('currentFlag').src = flagImg;
-
-		// 3. Troca os textos (Requer que você use data-pt e data-en nos elementos)
-		document.querySelectorAll('[data-pt]').forEach(el => {
-			el.innerHTML = el.getAttribute('data-' + lang);
-			
-		updateImagesByLanguage(lang);
-		});
-		*/
-		
+	function changeLanguage(lang) {	
 		currentLang = lang;
 
 		// Fecha menu
@@ -848,21 +830,7 @@
 		}
 	});
 
-	window.onload = function() {
-		/*
-		// Verifica se o idioma do navegador começa com 'en'
-		const browserLang = navigator.language || navigator.userLanguage;
-    
-		if (browserLang.startsWith('en')) {
-			currentLang = 'en';
-			updateContent();
-		} else {
-			currentLang = 'pt';
-		}
-		
-		updateContent();
-		*/
-		
+	window.onload = function() {	
 		// Idioma padrão
 		currentLang = 'pt';
 		
@@ -938,42 +906,19 @@
 			});
 		}
 	}
+	
 	// Função que lê o idioma da URL
-    function checkURLForLanguage() {
-        /*
-		// 1. Verifica se existe um hash (ex: #en ou #pt)
-        const hash = window.location.hash.replace('#', '');
-        
-        // 2. Verifica se existe parâmetro (ex: ?lang=en)
-        const urlParams = new URLSearchParams(window.location.search);
-        const langParam = urlParams.get('lang');
-
-        if (hash === 'en' || hash === 'pt') {
-            currentLang = hash;			
-        } else if (langParam === 'en' || langParam === 'pt') {
-            currentLang = langParam;
-        }
-
-		changeLanguage( currentLang );
-        updateContent();
-		*/
-		
-		const hash = window.location.hash.replace('#', '');
-		
-		const urlParams = new URLSearchParams(window.location.search);
-		
+    function checkURLForLanguage() {	
+		const hash = window.location.hash.replace('#', '');		
+		const urlParams = new URLSearchParams(window.location.search);		
 		const langParam = urlParams.get('lang');
 		
-		if (hash === 'en' || hash === 'pt') {
-		
-			currentLang = hash;
-		
-		} else if (langParam === 'en' || langParam === 'pt') {
-		
+		if (hash === 'en' || hash === 'pt') {		
+			currentLang = hash;		
+		} else if (langParam === 'en' || langParam === 'pt') {		
 			currentLang = langParam;
 		}		
-		
-    }	
+    }
 	
 </script>
 
