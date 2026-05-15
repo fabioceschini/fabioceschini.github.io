@@ -11,7 +11,7 @@
             --verde-dev: #1b845b;
             --azul-dbmoney: #004a99;			
 			--vermelho-dbpdf: #A75052;
-			--roxo-dbradio: #7A5B91;
+			--roxo-dbradio: #6a1b9a;
             --bg-light: #f4f7f6;
             --text-dark: #333;
             --white: #ffffff;
@@ -31,6 +31,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+			backdrop-filter: blur(10px);
         }
 		
         .logo-container { display: flex; align-items: center; gap: 12px; }
@@ -39,16 +40,52 @@
 		
         nav {
             display: flex;
-            align-items: center; /* Centraliza verticalmente links e bandeira */
-            gap: 20px;           /* Espaçamento uniforme entre todos os itens */
+            align-items: center;
+            gap: 12px;
         }
         
         nav a {
+            position: relative;
             text-decoration: none;
             color: var(--text-dark);
             font-weight: 600;
-            font-size: 0.9rem;
-            margin-left: 0;      /* Removemos a margem fixa para usar o gap do nav */
+            font-size: 0.95rem;
+            padding: 10px 8px;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+        }
+        
+        /* Hover elegante */
+        nav a:hover {
+            background: rgba(27, 132, 91, 0.08);
+            color: var(--verde-dev);
+        }
+        
+        /* Linha animada inferior */
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 15px;
+            bottom: 6px;
+            width: 0%;
+            height: 2px;
+            background: var(--verde-dev);
+            transition: width 0.25s ease;
+            border-radius: 2px;
+        }
+        
+        nav a:hover::after {
+            width: calc(100% - 30px);
+        }
+        
+        /* Botão ativo */
+        nav a.active {
+            background: var(--verde-dev);
+            color: white;
+        }
+        
+        nav a.active::after {
+            display: none;
         }
 
         /* --- HERO --- */
@@ -56,61 +93,31 @@
         .hero h1 { font-size: 2.5rem; margin-bottom: 15px; color: var(--verde-dev); line-height: 1.1; }
         .hero p { font-size: 1.1rem; color: #666; max-width: 800px; margin: 0 auto; }
 
-        .lang-selector {
-            position: relative;
-            display: inline-block;
-            margin-left: 20px;
-        }
-        
-        .lang-btn {
-            background: none;
-            border: 1px solid #ddd;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-family: inherit;
-            font-size: 0.8rem;
-            color: var(--text-dark);
-        }
-        
-        .lang-dropdown {
-            display: none;
-            position: absolute;
-            right: 0;
-            background-color: #fff;
-            min-width: 130px;
-            box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
-            border-radius: 8px;
-            z-index: 1100;
-            margin-top: 5px;
-        }
-        
-        .lang-dropdown a {
-            color: var(--text-dark);
-            padding: 10px 15px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 0; /* Reseta o margin do nav a */
-        }
-        
-        .lang-dropdown a:hover {
-            background-color: #f1f1f1;
-            border-radius: 8px;
-        }
-        
-        .lang-selector:hover .lang-dropdown {
-            display: block;
-        }
-        
-        .lang-dropdown img, .lang-btn img {
-            width: 18px;
-            height: 18px;
-        }
+.lang-selector { position: relative; display: inline-block; }
+
+.lang-btn {
+    background: none; border: 1px solid #ddd; padding: 5px 10px;
+    border-radius: 5px; cursor: pointer; display: flex;
+    align-items: center; gap: 8px; font-family: inherit;
+}
+
+.lang-dropdown {
+    display: none; position: absolute; right: 0; background: #fff;
+    min-width: 150px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px; z-index: 1100; margin-top: 5px;
+}
+
+/* Classe que o JS vai ativar */
+.lang-selector.active .lang-dropdown { display: block; }
+
+.lang-dropdown a {
+    color: #333; padding: 10px 15px; text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+}
+
+.lang-dropdown a:hover { background-color: #f1f1f1; border-radius: 8px; }
+
+.lang-dropdown img, .lang-btn img { width: 18px; height: 18px; }
 
         /* --- CONTAINER PRODUTO --- */
 		.product-card {
@@ -162,12 +169,12 @@
         .btn-blue { background-color: var(--azul-dbmoney); }
         .btn-red { background-color: #A75052; }
         .btn-purple { background-color: #7A5B91; }
-	
+
 		.icon-red { color: #d32f2f; margin-right: 10px; font-size: 1.8rem; }
-		.icon-purple { color: #6a1b9a; margin-right: 10px; font-size: 1.8rem; }
+		.icon-purple { color: var(--roxo-dbradio); margin-right: 10px; font-size: 1.8rem; }
 		
 		.badge-red { background: #FFE4F1; color: #A75052; padding: 10px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }
-		.badge-purple { background: #f3e5f5; color: #7b1fa2; padding: 10px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }		
+		.badge-purple { background: #f3e5f5; color: var(--roxo-dbradio); padding: 10px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; }		
 
         .dbmoney-intro { display: flex; align-items: center; gap: 30px; margin-bottom: 10px; }
         .dbmoney-intro img { width: 96px; height: auto; }
@@ -187,7 +194,7 @@
         /* --- GALERIA --- */
         .gallery-title { color: var(--azul-dbmoney); margin: 40px 0 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 1.4rem; }
 		.gallery-title-red { color: #A75052; margin: 40px 0 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 1.4rem; }
-		.gallery-title-purple { color: #7A5B91; margin: 40px 0 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 1.4rem; }
+		.gallery-title-purple { color: var(--roxo-dbradio); margin: 40px 0 20px; border-bottom: 2px solid #eee; padding-bottom: 10px; font-size: 1.4rem; }
         .screenshot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; }
         .screenshot-grid img { 
             width: 100%; border-radius: 8px; cursor: pointer; 
@@ -388,17 +395,13 @@
             
             .nav-btn { font-size: 24px; padding: 10px; }
 
-			.lang-selector {
-				position: relative;
-				display: flex;       /* Mudança de inline-block para flex */
-				align-items: center; /* Garante alinhamento vertical com os links */
-				margin-left: 20px;
-			}	
-
-			.lang-btn {
-				padding: 4px 8px;    /* Reduz um pouco o botão para caber melhor */
-				font-size: 0.75rem;
+			/* Garante que o botão de idioma apareça no menu mobile */
+			.mobile-nav .lang-btn {
+				display: flex;
+				align-self: center;
+				margin-top: 10px;
 			}
+			
         }
     </style>
 </head>
@@ -406,192 +409,210 @@
 
 <header>
     <div class="logo-container">
-        <img src="images/devbrazil.png" alt="DevBrazil Logo" class="logo-img">
+        <img src="images/devbrazil_logo_256.png" alt="DevBrazil Logo" class="logo-img">
         <span class="brand-name">DEVBRAZIL</span>
     </div>
-    <nav>
-        <a href="#empresa">Sobre</a>
-        <a href="#empresa">Produtos</a>
-		<a href="javascript:void(0)" onclick="openContactModal()">Contato</a>
-		<div class="lang-selector">
-		    <button class="lang-btn" id="langBtn" onclick="toggleLangMenu(event)">
-		        <img src="images/flag_brazil.png" alt="PT-BR"> 
-		        <i class="fas fa-chevron-down"></i>
-		    </button>
-		    <div class="lang-dropdown" id="langDropdown">
-		        <a href="index.html"><img src="images/flag_brazil.png"> Português</a>
-		        <a href="index_en.html"><img src="images/flag_usa.png"> English</a>
-		    </div>
+    <nav>	
+		<a href="javascript:void(0)" onclick="scrollToSection('empresa')" data-pt="Home" data-en="Home">Home</a>
+		<a href="javascript:void(0)" onclick="scrollToSection('dbmoney')" data-pt="Produtos" data-en="Products">Produtos</a>
+		<a href="javascript:void(0)" onclick="openContactModal()" data-pt="Contato" data-en="Contact">Contato</a>
+	
+		<div class="lang-selector" id="langSelector">
+			<button class="lang-btn" onclick="toggleLangMenu(event)">
+				<img src="images/flag_brazil.png" id="currentFlag" alt="Idioma"> 
+				<i class="fas fa-chevron-down"></i>
+			</button>
+			<div class="lang-dropdown" id="langDropdown">
+				<a href="javascript:void(0)" onclick="changeLanguage('pt')"><img src="images/flag_brazil.png"> Português</a>
+				<a href="javascript:void(0)" onclick="changeLanguage('en')"><img src="images/flag_usa.png"> English</a>
+			</div>
 		</div>
+		
     </nav>
 </header>
 
 <section class="hero" id="empresa">
-    <h1>Engenharia de Software de Alta Performance</h1>
-    <p>Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções que respeitam sua privacidade e produtividade.</p>
+    <h1 data-pt="Engenharia de Software de Alta Performance" data-en="High Performance Software Engineering">Engenharia de Software de Alta Performance</h1>
+    
+	<p data-pt="Com mais de 20 anos de experiência em sistemas críticos, a DevBrazil combina solidez técnica com inovação para criar soluções que respeitam sua privacidade e produtividade."
+	   data-en="With over 20 years of experience in mission-critical systems, DevBrazil combines technical expertise with innovation to create solutions that respect your privacy and productivity.">
+	</p>
+
+	<br>
+	<p data-pt="<strong>Junte-se a nós. Estamos presentes em mais de 100 mercados e territórios.</strong>"
+	   data-en="<strong>Join us. We are present in over 100 markets and territories.</strong>">
+	</p>
 </section>
 
 <div class="product-nav">
-    <a href="#dbmoney" class="nav-btn-item btn-blue"><i class="fas fa-wallet"></i> dbMoney</a>
-    <a href="#dbpdf" class="nav-btn-item btn-red"><i class="fas fa-file-pdf"></i> dbPDF</a>
-    <a href="#dbradio" class="nav-btn-item btn-purple"><i class="fas fa-music"></i> dbRadio</a>
+    <a href="javascript:void(0)" onclick="scrollToSection('dbmoney')" class="nav-btn-item btn-blue"><i class="fas fa-wallet"></i> dbMoney</a>
+    <a href="javascript:void(0)" onclick="scrollToSection('dbpdf')" class="nav-btn-item btn-red"><i class="fas fa-file-pdf"></i> dbPDF</a>
+    <a href="javascript:void(0)" onclick="scrollToSection('dbradio')" class="nav-btn-item btn-purple"><i class="fas fa-music"></i> dbRadio</a>
 </div>
 
 <br>
 
 <div class="product-card card-dbmoney" id="dbmoney">
     <div class="dbmoney-intro">
-        <img src="images/dbmoney.png" alt="dbMoney" class="dbmoney-intro">
+        <img src="images/dbmoney_logo_96.png" alt="dbMoney" class="dbmoney-intro">
         <div class="dbmoney-text">
             <h2>dbMoney Personal</h2>
-            <p>O <strong>dbMoney Personal</strong> é um software de gestão financeira de alta performance, desenvolvido nativamente para Windows. Projetado para usuários que priorizam segurança e privacidade, ele combina a robustez dos sistemas bancários com a agilidade de uma interface moderna e intuitiva.</p>
+            <p data-pt="O <strong>dbMoney Personal</strong> é um software de gestão financeira de alta performance, desenvolvido nativamente para Windows. Projetado para usuários que priorizam segurança e privacidade, ele combina a robustez dos sistemas bancários com a agilidade de uma interface moderna e intuitiva."
+			   data-en="<strong>dbMoney Personal</strong> is a high-performance financial management software, natively built for Windows. Designed for users who prioritize security and privacy, it combines the robustness of banking systems with the agility of a modern, intuitive interface.">
+			</p>
         </div>
     </div>
 	<br>
     <div class="about-content">
-        <p>Ao contrário de soluções em nuvem, o dbMoney prioriza a <strong>privacidade absoluta</strong>. Seus dados permanecem criptografados em seu computador, funcionando totalmente offline.</p>
+        <p data-pt="Ao contrário de soluções em nuvem, o dbMoney prioriza a <strong>privacidade absoluta</strong>. Seus dados permanecem criptografados em seu computador, funcionando totalmente offline."
+		   data-en="Unlike cloud solutions, dbMoney prioritizes <strong>absolute privacy</strong>. Your data remains encrypted on your computer, working fully offline.">
+		</p>
 		<br>
-		<p><strong>Liberdade Financeira Sem Mensalidades</strong></p>
-		<p>- Compra única, uso vitalício.</p>
+		<p data-pt="<strong>Liberdade Financeira Sem Mensalidades</strong>"
+		   data-en="<strong>Financial Freedom Without Subscriptions</strong>">
+		</p>
+		<p data-pt="- Compra única, uso vitalício."
+		   data-en="- One-time purchase, lifetime use.">
+		</p>
 		
         <div class="feature-grid">
             <div class="feature-item">
-                <strong><i class="fas fa-microchip"></i> Performance Nativa</strong>
-                Respostas instantâneas mesmo com milhares de registros.
+                <strong><i class="fas fa-microchip"></i><a data-pt=" Performance Nativa" data-en=" Native Performance"></a></strong>
+                <a data-pt="Respostas instantâneas mesmo com milhares de registros." data-en="Instant responses even with thousands of records."></a>
             </div>
             <div class="feature-item">
-                <strong><i class="fas fa-cog"></i> Engenharia de Dados</strong>
-                Categorização flexível independente do fluxo financeiro.
+                <strong><i class="fas fa-cog"></i><a data-pt=" Engenharia de Dados" data-en=" Data Engineering"></a></strong>
+				<a data-pt="Categorização flexível independente do fluxo financeiro." data-en="Flexible categorization independent of financial flow."></a>
             </div>			
             <div class="feature-item">
-                <strong><i class="fas fa-file-import"></i> Automação</strong>
-                Importe extratos OFX e categorize automaticamente com regras inteligentes.
+                <strong><i class="fas fa-file-import"></i><a data-pt=" Automação" data-en=" Automation"></a></strong>
+				<a data-pt="Importe extratos OFX e categorize automaticamente com regras inteligentes." data-en="Import OFX statements and categorize automatically with smart rules."></a>
             </div>
         </div>
     </div>
 
-    <h3 class="gallery-title">Capturas de tela</h3>
+    <h3 class="gallery-title"><a data-pt="Capturas de tela" data-en="Screenshots"></a></h3>
     <div class="screenshot-grid" id="gallery-dbmoney">
-        <!-- Mantendo sua lógica de imagens original -->
-        <img src="images/dbmoney_tela_01.png" alt="Tela 01" onclick="openModal(00, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_02.png" alt="Tela 02" onclick="openModal(01, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_03.png" alt="Tela 03" onclick="openModal(02, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_04.png" alt="Tela 04" onclick="openModal(03, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_05.png" alt="Tela 05" onclick="openModal(04, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_06.png" alt="Tela 06" onclick="openModal(05, 'gallery-dbmoney')">
-        <img src="images/dbmoney_tela_07.png" alt="Tela 07" onclick="openModal(06, 'gallery-dbmoney')">
-		<img src="images/dbmoney_tela_08.png" alt="Tela 08" onclick="openModal(07, 'gallery-dbmoney')">
-		<img src="images/dbmoney_tela_09.png" alt="Tela 09" onclick="openModal(08, 'gallery-dbmoney')">
-		<img src="images/dbmoney_tela_10.png" alt="Tela 10" onclick="openModal(09, 'gallery-dbmoney')">
-		<img src="images/dbmoney_tela_11.png" alt="Tela 11" onclick="openModal(10, 'gallery-dbmoney')">
+        <!-- Mantendo sua lógica de imagens original -->	
+		<img src="images/dbmoney_screen_01_pt.png" alt="Screen 01" onclick="openModal(00, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_02_pt.png" alt="Screen 02" onclick="openModal(01, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_03_pt.png" alt="Screen 03" onclick="openModal(02, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_04_pt.png" alt="Screen 04" onclick="openModal(03, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_05_pt.png" alt="Screen 05" onclick="openModal(04, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_06_pt.png" alt="Screen 06" onclick="openModal(05, 'gallery-dbmoney')">
+        <img src="images/dbmoney_screen_07_pt.png" alt="Screen 07" onclick="openModal(06, 'gallery-dbmoney')">
+		<img src="images/dbmoney_screen_08_pt.png" alt="Screen 08" onclick="openModal(07, 'gallery-dbmoney')">
+		<img src="images/dbmoney_screen_09_pt.png" alt="Screen 09" onclick="openModal(08, 'gallery-dbmoney')">
+		<img src="images/dbmoney_screen_10_pt.png" alt="Screen 10" onclick="openModal(09, 'gallery-dbmoney')">
+		<img src="images/dbmoney_screen_11_pt.png" alt="Screen 11" onclick="openModal(10, 'gallery-dbmoney')">
     </div>
 
-    <h3 class="gallery-title">Planos e Versões</h3>
+    <h3 class="gallery-title"><a data-pt="Planos e Versões" data-en="Plans & Versions"></a></h3>
     <div class="pricing-table-container">
         <table>
             <thead>
                 <tr>
-                    <th>Funcionalidade</th>
-                    <th>Versão Basic</th>
-                    <th>Versão Premium</th>
+                    <th><a data-pt="Funcionalidade" data-en="Feature"></a></th>
+                    <th><a data-pt="Versão Basic" data-en="Basic Version"></a></th>
+                    <th><a data-pt="Versão Premium" data-en="Premium Version"></a></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><i class="fas fa-wallet"></i> Contas / Carteiras</td>
-                    <td><span class="limit-text">2 contas</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-wallet"></i><a data-pt=" Contas / Carteiras" data-en=" Accounts / Wallets"> Contas / Carteiras</a></td>
+                    <td><span class="limit-text"><a data-pt="2 contas" data-en="2 accounts"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-th-large"></i> Categorias e Subcategorias</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-th-large"></i><a data-pt=" Categorias e Subcategorias" data-en=" Categories and Subcategories"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-user"></i> Contatos</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-user"></i><a data-pt="  Contatos" data-en=" Contacts"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-tags"></i> Marcadores</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-tags"></i><a data-pt="  Marcadores" data-en=" Markers"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-pie-chart"></i> Dashboards</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-pie-chart"></i><a data-pt=" Dashboards" data-en=" Dashboards"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>				
                 <tr>
-                    <td><i class="fas fa-edit"></i> Lançamentos Manuais</td>
-                    <td><span class="limit-text">20 por mês</span></td>
+                    <td><i class="fas fa-edit"></i><a data-pt=" Lançamentos Manuais" data-en=" Manual Transactions"></a></td>
+                    <td><span class="limit-text"><a data-pt="20 por mês" data-en="20 per month"></a></span></td>
                     <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-list-alt"></i> Alteração em lote</td>
-                    <td><span class="limit-text">3 execuções</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-list-alt"></i><a data-pt=" Alteração em lote" data-en=" Batch Changes"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 execuções" data-en="3 executions"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-plus-square"></i> Múltiplos lançamentos</td>
-                    <td><span class="limit-text">3 execuções</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-plus-square"></i><a data-pt=" Múltiplos lançamentos" data-en=" Multiple Transactions"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 execuções" data-en="3 executions"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-clone"></i> Replicar/copiar lançamentos</td>
-                    <td><span class="limit-text">3 execuções</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-clone"></i><a data-pt=" Replicar/copiar lançamentos" data-en=" Replicate/Copy Transactions"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 execuções" data-en="3 executions"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-compress"></i> Unificar/conciliar lançamentos</td>
-                    <td><span class="limit-text">3 execuções</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-compress"></i><a data-pt=" Unificar/conciliar lançamentos" data-en=" Merge/Reconcile Transactions"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 execuções" data-en="3 executions"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-arrows"></i> Desmembrar lançamentos</td>
-                    <td><span class="limit-text">3 execuções</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-arrows"></i><a data-pt=" Desmembrar lançamentos" data-en=" Split Transactions"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 execuções" data-en="3 executions"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-file-import"></i> Importação de extratos (OFX)</td>
-                    <td><span class="limit-text">3 importações</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-file-import"></i><a data-pt=" Importação de extratos (OFX)" data-en=" Statement Import (OFX)"></a></td>
+                    <td><span class="limit-text"><a data-pt="3 importações" data-en="3 imports"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>				
                 <tr>
-                    <td><i class="fas fa-file-excel"></i> Exportar para Excel</td>
-                    <td><span class="limit-text">5 exportações</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-file-excel"></i><a data-pt=" Exportar para Excel" data-en=" Export to Excel"></a></td>
+                    <td><span class="limit-text"><a data-pt="5 exportações" data-en="5 exports"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-code"></i> Exportar para HTML</td>
-                    <td><span class="limit-text">5 exportações</span></td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Ilimitado</td>
+                    <td><i class="fas fa-code"></i><a data-pt=" Exportar para HTML" data-en=" Export to HTML"></a></td>
+                    <td><span class="limit-text"><a data-pt="5 exportações" data-en="5 exports"></a></span></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Ilimitado" data-en=" Unlimited"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-history"></i> Backup automático (configurável)</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
+                    <td><i class="fas fa-history"></i><a data-pt=" Backup automático (configurável)" data-en=" Automatic Backup (Configurable)"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Sim" data-en=" Yes"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Sim" data-en=" Yes"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-envelope"></i> Suporte por e-mail</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
+                    <td><i class="fas fa-envelope"></i><a data-pt=" Suporte por e-mail" data-en=" Email Support"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Sim" data-en=" Yes"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Sim" data-en=" Yes"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-thumbs-up"></i> Suporte prioritário</td>
-                    <td><i class="fas fa-times-circle check-no"></i> Não</td>
-                    <td><i class="fas fa-check-circle check-yes"></i> Sim</td>
+                    <td><i class="fas fa-thumbs-up"></i><a data-pt=" Suporte prioritário" data-en=" Priority Support"></a></td>
+                    <td><i class="fas fa-times-circle check-no"></i><a data-pt=" Não" data-en=" No"></a></td>
+                    <td><i class="fas fa-check-circle check-yes"></i><a data-pt=" Sim" data-en=" Yes"></a></td>
                 </tr>
                 <tr>
-                    <td><i class="fas fa-check-circle"></i> Preço</td>
-					<td><span class="limit-text-blue"> Gratuito</span></td>
-					<td><span class="limit-text-blue"> R$ 99,00 (vitalício)</span></td>
+                    <td><i class="fas fa-check-circle"></i><a data-pt=" Preço" data-en=" Price"></a></td>
+					<td><span class="limit-text-blue"><a data-pt=" Gratuito" data-en=" Free"></a></span></td>
+					<td><span class="limit-text-blue"><a data-pt=" R$ 99,00 (vitalício)" data-en=" $ 29.00 (lifetime)"></a></span></td>
                 </tr>				
             </tbody>
         </table>
     </div>
 
-    <a href="https://apps.microsoft.com/detail/9N0PB6XG7ZQT" target="_blank" class="btn-store-dbmoney"><i class="fab fa-microsoft"></i> Disponível na Microsoft Store</a>	
+    <a href="https://apps.microsoft.com/detail/9N0PB6XG7ZQT" target="_blank" class="btn-store-dbmoney" data-pt="Disponível na Microsoft Store" data-en="Available on the Microsoft Store"><i class="fab fa-microsoft"></i></a>
 </div>
 
 <br>
@@ -599,30 +620,37 @@
 <!-- Produto: dbPDF -->
 <div class="product-card card-dbpdf" id="dbpdf">
     <div class="dbmoney-intro">
-        <img src="images/dbpdf.png" alt="dbPDF" class="dbmoney-intro">
+        <img src="images/dbpdf_logo_96.png" alt="dbPDF" class="dbmoney-intro">
         <div class="dbmoney-text">
             <h2>dbPDF</h2>
-            <p>O leitor de PDF nativo para quem busca <strong>velocidade absoluta</strong>. Sem recursos pesados ou ferramentas desnecessárias, ele foca no que importa: uma leitura fluida e instantânea.</p>
+            <p data-pt="O leitor de PDF nativo para quem busca <strong>velocidade absoluta</strong>. Sem recursos pesados ou ferramentas desnecessárias, ele foca no que importa: uma leitura fluida e instantânea."
+			   data-en="The native PDF reader for those seeking <strong>absolute speed</strong>. Without heavy features or unnecessary tools, it focuses on what matters: fluid and instant reading.">
+			</p>
         </div>
     </div>
 	
     <br>
     <div class="about-content">
-        <p>Desenvolvido sob medida para usuários que buscam uma alternativa leve aos leitores tradicionais. Totalmente focado em produtividade e privacidade.</p>
+        <p data-pt="Desenvolvido sob medida para usuários que buscam uma alternativa leve aos leitores tradicionais. Totalmente focado em produtividade e privacidade."
+		   data-en="Developed specifically for users seeking a lightweight alternative to traditional readers. Completely focused on productivity and privacy.">
+		</p>
     </div>
 	
-    <h3 class="gallery-title-red">Capturas de tela</h3>
+    <h3 class="gallery-title-red"><a data-pt="Capturas de tela" data-en="Screenshoats"></a></h3>
     <div class="screenshot-grid" id="gallery-dbpdf">
         <!-- Mantendo sua lógica de imagens original -->
-        <img src="images/dbpdf_tela_01.png" alt="Tela 01" onclick="openModal(0, 'gallery-dbpdf')">
-        <img src="images/dbpdf_tela_02.png" alt="Tela 02" onclick="openModal(1, 'gallery-dbpdf')">
-		<img src="images/dbpdf_tela_03.png" alt="Tela 03" onclick="openModal(2, 'gallery-dbpdf')">
-		<img src="images/dbpdf_tela_04.png" alt="Tela 04" onclick="openModal(3, 'gallery-dbpdf')">
+        <img src="images/dbpdf_screen_01_pt.png" alt="Screen 01" onclick="openModal(0, 'gallery-dbpdf')">
+        <img src="images/dbpdf_screen_02_pt.png" alt="Screen 02" onclick="openModal(1, 'gallery-dbpdf')">
+		<img src="images/dbpdf_screen_03_pt.png" alt="Screen 03" onclick="openModal(2, 'gallery-dbpdf')">
+		<img src="images/dbpdf_screen_04_pt.png" alt="Screen 04" onclick="openModal(3, 'gallery-dbpdf')">
     </div>
 
     <div class="product-info-footer" style="text-align: center; margin-top: 30px;">
-		<span class="badge-red">100% Gratuito</span><br><br><i>(Mantido por doações voluntárias)</i><br>
-		<a href="https://apps.microsoft.com/detail/9N7H3FPQX608" target="_blank" class="btn-store-dbpdf"><i class="fab fa-microsoft"></i>  Disponível na Microsoft Store</a>
+		<span class="badge-red"><a data-pt="100% Gratuito" data-en="100% Free"></a></span>
+		<br><br>
+		<i data-pt="(Mantido por doações voluntárias)" data-en="(Supported by voluntary donations)"></i><br>
+		
+		<a href="https://apps.microsoft.com/detail/9N7H3FPQX608" target="_blank" class="btn-store-dbpdf" data-pt="Disponível na Microsoft Store" data-en="Available on the Microsoft Store"><i class="fab fa-microsoft"></i></a>		
     </div>
 	
 </div>
@@ -632,28 +660,41 @@
 <!-- Produto: dbRadio Community (Em Breve) -->
 <div class="product-card card-dbradio" id="dbradio">
     <div class="dbmoney-intro">
-        <img src="images/dbradio.png" alt="dbRadio" class="dbmoney-intro">
+        <img src="images/dbradio_logo_96.png" alt="dbRadio" class="dbmoney-intro">
         <div class="dbmoney-text">
-            <h2>dbRadio Community (beta)</h2>
-            <p>A sua <strong>rádio</strong> local disponível para o mundo. Participe da construção do maior banco de dados comunitário de streaming do Windows.</p>
+            <h2>dbRadio (beta)</h2>
+            <p data-pt="Mais que um player, uma rede global de ouvintes. No <strong>dbRadio</strong>, cada usuário é um curador. Adicione rádios exclusivas e, em breve, descubra o que o mundo está ouvindo através das listas compartilhadas pela nossa comunidade. Experiência nativa, leve e conectada."
+			   data-en="More than a player, a global network of listeners. On <strong>dbRadio</strong>, every user is a curator. Add exclusive radio stations and soon discover what the world is listening to through playlists shared by our community. A native, lightweight, and connected experience.">
+			</p>
         </div>
     </div>
 	<br>
     <div class="about-content">
-        <p>Cadastre emissoras, compartilhe logos e ajude outros usuários a encontrarem rádios independentes que não estão nos apps comerciais.</p>
+        <p data-pt="Participe da construção do maior banco de dados comunitário de streaming da internet. Cadastre emissoras, compartilhe logos e ajude outros usuários a encontrarem rádios independentes que não estão nos apps comerciais."
+     	   data-en="Participate in building the largest community-based streaming database on the internet. Register stations, share logos, and help other users find independent radio stations that aren't on commercial apps.">
+		</p>
     </div>
 	
-    <h3 class="gallery-title-purple">Capturas de tela</h3>
+	<div class="about-content" style="color: var(--roxo-dbradio)">
+		<a data-pt="Este aplicativo foi desenvolvido por amantes de webrádios ao redor do mundo."
+		   data-en="This app was developed by web radio enthusiasts around the world.">
+		</a>
+	</div>
+
+    <h3 class="gallery-title-purple"><a data-pt="Capturas de tela" data-en="Screenshoats"></a></h3>
     <div class="screenshot-grid" id="gallery-dbradio">
         <!-- Mantendo sua lógica de imagens original -->
-        <img src="images/dbradio_tela_01.png" alt="Tela 01" onclick="openModal(0, 'gallery-dbradio')">
-        <img src="images/dbradio_tela_02.png" alt="Tela 02" onclick="openModal(1, 'gallery-dbradio')">
-		<img src="images/dbradio_tela_03.png" alt="Tela 03" onclick="openModal(2, 'gallery-dbradio')">
+        <img src="images/dbradio_screen_01_pt.png" alt="Screen 01" onclick="openModal(0, 'gallery-dbradio')">
+        <img src="images/dbradio_screen_02_pt.png" alt="Screen 02" onclick="openModal(1, 'gallery-dbradio')">
+		<img src="images/dbradio_screen_03_pt.png" alt="Screen 03" onclick="openModal(2, 'gallery-dbradio')">
     </div>	
 	
     <div class="product-info-footer" style="text-align: center; margin-top: 30px;">
-        <span class="badge-purple">100% Gratuito</span><br><br><i>(Mantido por doações voluntárias)</i><br>
-        <a href="https://apps.microsoft.com/detail/9NRWV6JRPT8R" target="_blank" class="btn-store-dbradio"><i class="fab fa-microsoft"></i>  Em Breve na Microsoft Store</a>
+        <span class="badge-purple"><a data-pt="100% Gratuito" data-en="100% Free"></a></span>
+		<br><br>
+		<i data-pt="(Mantido por doações voluntárias)" data-en="(Supported by voluntary donations)"></i><br>
+		
+        <a href="https://apps.microsoft.com/detail/9NRWV6JRPT8R" target="_blank" class="btn-store-dbradio" data-pt="Em Breve na Microsoft Store" data-en="Coming Soon to the Microsoft Store"><i class="fab fa-microsoft"></i></a>
 		<!-- <button class="btn-store" style="background: #6a1b9a; cursor: not-allowed;" disabled><i class="fas fa-clock"></i>  Em Breve na Microsoft Store</button> -->
     </div>	
 	
@@ -662,26 +703,32 @@
 <div id="contactModal" class="contact-modal">
     <div class="contact-modal-content">
         <span class="close-contact" onclick="closeContactModal()">&times;</span>
-        <h2>Enviar Mensagem</h2>
-        <p>Preencha os campos abaixo e entraremos em contato em breve.</p>
+        <h2 data-pt="Enviar Mensagem" data-en="Send Message">Enviar Mensagem</h2>		
+				
+        <p data-pt="Preencha os campos abaixo e entraremos em contato em breve."
+		   data-en="Fill in the fields below and we will contact you soon.">
+		</p>
 		<br>
-		<p>Caso prefira, entre em contato através do e-mail: <a href="mailto:support@devbrazil.com">support@devbrazil.com</a></p>
+		<a data-pt="Caso prefira, entre em contato através do e-mail:" data-en="If you prefer, contact us via email:"></a>
+		<a href="mailto:support@devbrazil.com" style="color: var(--verde-dev)">support@devbrazil.com</a>
         
         <form id="contactForm" action="https://formsubmit.co/support@devbrazil.com" method="POST">
-            <input type="text" name="name" placeholder="Seu Nome" required>
-            <input type="email" name="email" placeholder="Seu E-mail" required>
-            <input type="text" name="_subject" placeholder="Assunto">
-            <textarea name="message" rows="5" placeholder="Como podemos ajudar?" required></textarea>
-            
+			<input type="text" name="name" data-placeholder-pt="Seu Nome" data-placeholder-en="Your Name" placeholder="Seu Nome" required>
+			<input type="email" name="email" data-placeholder-pt="Seu E-mail" data-placeholder-en="Your Email" placeholder="Seu E-mail" required>
+			<input type="text" name="_subject" data-placeholder-pt="Assunto" data-placeholder-en="Subject" placeholder="Assunto">
+			<textarea name="message" rows="5" data-placeholder-pt="Como podemos ajudar?" data-placeholder-en="How can we help?" placeholder="Como podemos ajudar?" required></textarea>			
+			
             <input type="text" name="_honey" style="display:none">
             
-            <button type="submit" class="btn-send">Enviar</button>
+            <button type="submit" class="btn-send"><a data-pt="Enviar" data-en="Send"></a></button>
         </form>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 DevBrazil. Todos os direitos reservados.</p>
+    <p data-pt="&copy; 2026 DevBrazil. Todos os direitos reservados."
+	   data-en="&copy; 2026 DevBrazil. All rights reserved.">
+	</p>
 </footer>
 
 <div id="myModal" class="modal">
@@ -694,6 +741,144 @@
 <script>
 	let currentImageIndex = 0;
 	let currentGalleryImages = [];
+	// let currentLang = 'pt';
+	
+	function updateContent() {
+
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			const texto = el.getAttribute('data-' + currentLang);
+			if (texto) {
+				// USAR innerHTML para que o navegador processe o <strong>
+				el.innerHTML = texto;
+			}
+		});
+		
+		// Atualiza placeholders
+		document.querySelectorAll('[data-placeholder-pt]').forEach(el => {
+			const texto = el.getAttribute('data-placeholder-' + currentLang);
+
+			if (texto) {
+				el.placeholder = texto;
+			}
+		});		
+		
+		// Atualiza o texto do botão de troca
+		document.querySelectorAll('.lang-text').forEach(span => {
+			span.innerText = (currentLang === 'pt') ? 'EN' : 'PT';
+		});
+	}
+
+	function toggleLangMenu(event) {
+		event.stopPropagation();
+		document.getElementById('langSelector').classList.toggle('active');
+	}
+
+	function changeLanguage(lang) {
+		/*
+		currentLang = lang;
+    
+		// 1. Fecha o menu
+		document.getElementById('langSelector').classList.remove('active');
+    
+		// 2. Atualiza a bandeira do botão principal
+		const flagImg = lang === 'pt' ? 'images/flag_brazil.png' : 'images/flag_usa.png';
+		document.getElementById('currentFlag').src = flagImg;
+
+		// 3. Troca os textos (Requer que você use data-pt e data-en nos elementos)
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			el.innerHTML = el.getAttribute('data-' + lang);
+			
+		updateImagesByLanguage(lang);
+		});
+		*/
+		
+		currentLang = lang;
+
+		// Fecha menu
+		document.getElementById('langSelector').classList.remove('active');
+
+		// Atualiza bandeira
+		const flagImg = (lang === 'pt')
+			? 'images/flag_brazil.png'
+			: 'images/flag_usa.png';
+
+		document.getElementById('currentFlag').src = flagImg;
+
+		// Atualiza textos
+		updateContent();
+
+		// Atualiza imagens
+		updateImagesByLanguage(lang);		
+		}
+	
+	function updateImagesByLanguage(lang) {
+
+		const flag = (lang === 'pt') ? 'pt' : 'en';
+
+		document.querySelectorAll('.screenshot-grid img').forEach(img => {
+
+			img.src = img.src
+				.replace('_pt_', '_' + flag + '_')
+				.replace('_en_', '_' + flag + '_');
+
+		});
+	}	
+
+	window.addEventListener('click', function(event) {
+	
+		// Fecha menu de idioma ao clicar fora
+		const langSelector = document.getElementById('langSelector');
+	
+		if (!langSelector.contains(event.target)) {
+			langSelector.classList.remove('active');
+		}
+	
+		// Fecha modal da galeria
+		let galleryModal = document.getElementById("myModal");
+	
+		if (event.target == galleryModal) {
+			closeModal();
+		}
+	
+		// Fecha modal de contato
+		let contactModal = document.getElementById("contactModal");
+	
+		if (event.target == contactModal) {
+			closeContactModal();
+		}
+	});
+
+	window.onload = function() {
+		/*
+		// Verifica se o idioma do navegador começa com 'en'
+		const browserLang = navigator.language || navigator.userLanguage;
+    
+		if (browserLang.startsWith('en')) {
+			currentLang = 'en';
+			updateContent();
+		} else {
+			currentLang = 'pt';
+		}
+		
+		updateContent();
+		*/
+		
+		// Idioma padrão
+		currentLang = 'pt';
+		
+		// Detecta idioma do navegador
+		const browserLang = navigator.language || navigator.userLanguage;
+		
+		if (browserLang.startsWith('en')) {
+			currentLang = 'en';
+		}
+		
+		// Verifica URL (?lang=en ou #en)
+		checkURLForLanguage();
+		
+		// Atualiza conteúdo
+		changeLanguage(currentLang);		
+	}
 
 	// Função para abrir o modal baseada na galeria específica
 	function openModal(index, galleryId) {
@@ -730,12 +915,10 @@
 			if (e.key === "Escape") closeModal();
 		}
 	});
-
-	window.onclick = function(event) {
-		let modal = document.getElementById("myModal");
-		if (event.target == modal) { closeModal(); }
-	}
 	
+	// Executa assim que o site carregar
+    document.addEventListener("DOMContentLoaded", checkURLForLanguage);
+
 	function openContactModal() {
 	    document.getElementById("contactModal").style.display = "flex";
 	}
@@ -743,14 +926,55 @@
 	function closeContactModal() {
 	    document.getElementById("contactModal").style.display = "none";
 	}
+
+	function scrollToSection(id) {
+
+		const element = document.getElementById(id);
+
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+	}
+	// Função que lê o idioma da URL
+    function checkURLForLanguage() {
+        /*
+		// 1. Verifica se existe um hash (ex: #en ou #pt)
+        const hash = window.location.hash.replace('#', '');
+        
+        // 2. Verifica se existe parâmetro (ex: ?lang=en)
+        const urlParams = new URLSearchParams(window.location.search);
+        const langParam = urlParams.get('lang');
+
+        if (hash === 'en' || hash === 'pt') {
+            currentLang = hash;			
+        } else if (langParam === 'en' || langParam === 'pt') {
+            currentLang = langParam;
+        }
+
+		changeLanguage( currentLang );
+        updateContent();
+		*/
+		
+		const hash = window.location.hash.replace('#', '');
+		
+		const urlParams = new URLSearchParams(window.location.search);
+		
+		const langParam = urlParams.get('lang');
+		
+		if (hash === 'en' || hash === 'pt') {
+		
+			currentLang = hash;
+		
+		} else if (langParam === 'en' || langParam === 'pt') {
+		
+			currentLang = langParam;
+		}		
+		
+    }	
 	
-	// Fechar se clicar fora do conteúdo
-	window.onclick = function(event) {
-	    let modal = document.getElementById("contactModal");
-	    if (event.target == modal) {
-	        closeContactModal();
-	    }
-	}	
 </script>
 
 </body>
