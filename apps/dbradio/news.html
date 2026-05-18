@@ -13,6 +13,9 @@
             padding: 0px;
             text-align: center;
         }
+		
+		strong { color: #66447D; }
+		
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -45,19 +48,116 @@
 </head>
 <body>
     <div class="container">
-        <p>Este aplicativo foi desenvolvido por amantes de webrádios ao redor do mundo.</p>
+        <p data-pt="Este aplicativo foi desenvolvido por amantes de webrádios ao redor do mundo."
+		   data-en="This app was developed by web radio enthusiasts around the world.">
+		</p>
         
-        <p>Gostaríamos que todos pudessem ouvir suas rádios favoritas em casa e no trabalho.</p>
+        <p data-pt="Gostaríamos que todos pudessem ouvir suas rádios favoritas em casa e no trabalho."
+		   data-en="We would like everyone to be able to listen to their favorite radio stations at home and at work.">
+		</p>		
         
-        <p>Para que isso seja possível, investimos em um <span class="bold-purple">servidor dedicado</span> para armazenar e compartilhar as rádios cadastradas pela comunidade.</p>
+        <p data-pt="Para que isso seja possível, investimos em um <strong>servidor dedicado</strong> para armazenar e compartilhar as rádios cadastradas pela comunidade."
+		   data-en="To make this possible, invest in a <strong>dedicated server</strong> to store and share the radio stations registered by the community.">
+		</p>
         
-		<p>Se você gostou do projeto, considere <span class="bold-purple">apoiar</span> sua manutenção e desenvolvimento com uma pequena doação.</p>
+		<p data-pt="Se você gostou do projeto, considere <strong>apoiar</strong> sua manutenção e desenvolvimento com uma pequena doação."
+		   data-en="If you enjoyed the project, please consider <strong>supporting</strong> its maintenance and development with a small donation.">		
+		</p>
         
-        <p>Juntos, construiremos a maior base comunitária de rádios da web.</p>
+        <!-- <p>Juntos, construiremos a maior base comunitária de rádios da web.</p> -->
+		
+		<p data-pt="<i><strong>O dbRadio é 100% gratuito</strong></i>"
+		   data-en="<i><strong>dbRadio is 100% free</strong></i>">
+		</p>
         
+		<!--
         <div class="footer">
             O <span class="bold-purple">dbRadio</span> é e sempre será <span class="bold-purple">100% gratuito</span>.<br><br>
         </div>
+		-->
     </div>
 </body>
+
+<script>
+	
+	function updateContent() {
+
+		document.querySelectorAll('[data-pt]').forEach(el => {
+			const texto = el.getAttribute('data-' + currentLang);
+			if (texto) {
+				// USAR innerHTML para que o navegador processe o <strong>
+				el.innerHTML = texto;
+			}
+		});
+		
+		// Atualiza placeholders
+		document.querySelectorAll('[data-placeholder-pt]').forEach(el => {
+			const texto = el.getAttribute('data-placeholder-' + currentLang);
+
+			if (texto) {
+				el.placeholder = texto;
+			}
+		});		
+		
+		// Atualiza o texto do botão de troca
+		document.querySelectorAll('.lang-text').forEach(span => {
+			span.innerText = (currentLang === 'pt') ? 'EN' : 'PT';
+		});
+	}
+
+	function changeLanguage(lang) {	
+		currentLang = lang;
+
+		// Atualiza textos
+		updateContent();
+		}
+	
+	window.onload = function() {
+		// Idioma padrão
+		currentLang = 'pt';
+		
+		// Detecta idioma do navegador
+		const browserLang = navigator.language || navigator.userLanguage;
+		
+		if (browserLang.startsWith('en')) {
+			currentLang = 'en';
+		}
+		
+		// Verifica URL (?lang=en ou #en)
+		checkURLForLanguage();
+		
+		// Atualiza conteúdo
+		changeLanguage(currentLang);		
+	}
+
+	// Executa assim que o site carregar
+    document.addEventListener("DOMContentLoaded", checkURLForLanguage);
+
+	function scrollToSection(id) {
+
+		const element = document.getElementById(id);
+
+		if (element) {
+			element.scrollIntoView({
+				behavior: 'smooth',
+				block: 'start'
+			});
+		}
+	}
+	
+	// Função que lê o idioma da URL
+    function checkURLForLanguage() {	
+		const hash = window.location.hash.replace('#', '');		
+		const urlParams = new URLSearchParams(window.location.search);		
+		const langParam = urlParams.get('lang');
+		
+		if (hash === 'en' || hash === 'pt') {		
+			currentLang = hash;		
+		} else if (langParam === 'en' || langParam === 'pt') {		
+			currentLang = langParam;
+		}		
+    }
+	
+</script>	
+
 </html>
