@@ -651,12 +651,12 @@
     <br>
     <div class="about-content">
         <p data-pt="Desenvolvido sob medida para usuários que buscam uma alternativa leve aos leitores tradicionais. Totalmente focado em produtividade e privacidade."
-		   data-en="Developed specifically for users seeking a lightweight alternative to traditional readers. Completely focused on productivity and privacy."
+		   data-en="Developed specifically for users seeking a lightweight alternative to traditional PDF viewers.. Completely focused on productivity and privacy."
 		   data-es="Diseñado específicamente para usuarios que buscan una alternativa ligera a los lectores electrónicos tradicionales. Totalmente enfocado en la productividad y la privacidad.">
 		</p>
     </div>
 	
-    <h3 class="gallery-title-red"><a data-pt="Capturas de tela" data-en="Screenshoats" data-es="Capturas de pantalla"></a></h3>
+    <h3 class="gallery-title-red"><a data-pt="Capturas de tela" data-en="Screenshots" data-es="Capturas de pantalla"></a></h3>
     <div class="screenshot-grid" id="gallery-dbpdf">
         <!-- Mantendo sua lógica de imagens original -->
         <img src="images/dbpdf_screen_01_pt.png" alt="Screen 01" onclick="openModal(0, 'gallery-dbpdf')">
@@ -693,7 +693,7 @@
 	<br>
     <div class="about-content">
         <p data-pt="Participe da construção do maior banco de dados comunitário de streaming da internet. Cadastre emissoras, compartilhe logos e ajude outros usuários a encontrarem rádios independentes que não estão nos apps comerciais."
-     	   data-en="Participate in building the largest community-based streaming database on the internet. Register stations, share logos, and help other users find independent radio stations that aren't on commercial apps."
+     	   data-en="Participate in building the largest community-based streaming database on the internet. Register stations, share logos, and help other users find independent radio stations that are not available on commercial apps."
 		   data-es="Participa en la creación de la mayor base de datos de streaming comunitaria de internet. Registra emisoras, comparte logotipos y ayuda a otros usuarios a encontrar emisoras de radio independientes que no están disponibles en aplicaciones comerciales.">
 		</p>
     </div>
@@ -705,7 +705,7 @@
 		</a>
 	</div>
 
-    <h3 class="gallery-title-purple"><a data-pt="Capturas de tela" data-en="Screenshoats" data-es="Capturas de pantalla"></a></h3>
+    <h3 class="gallery-title-purple"><a data-pt="Capturas de tela" data-en="Screenshots" data-es="Capturas de pantalla"></a></h3>
     <div class="screenshot-grid" id="gallery-dbradio">
         <!-- Mantendo sua lógica de imagens original -->
         <img src="images/dbradio_screen_01_pt.png" alt="Screen 01" onclick="openModal(0, 'gallery-dbradio')">
@@ -823,24 +823,27 @@
 		// Atualiza imagens
 		updateImagesByLanguage(lang);		
 		}
-	
-	function updateImagesByLanguage(lang) {
 
-		// const flags = { 'pt': 'pt', 'en': 'en', 'es': 'es' };
-			
+	/*
+	function updateImagesByLanguage(lang) {
 		const sufixos = { 'pt': '_pt', 'es': '_en', 'en': '_en' };
 		const sufixo = sufixos[lang] || '_en';
 
-		document.querySelectorAll('.screenshot-grid img').forEach(img => {
-			/*
-			img.src = img.src
-				.replace('_pt', '_' + flag )
-				.replace('_en', '_' + flag );
-			*/
-			
+		document.querySelectorAll('.screenshot-grid img').forEach(img => {		
 			img.src = img.src
 				.replace('_pt', sufixo )
 				.replace('_en', sufixo );
+		});
+	}
+	*/
+	
+	function updateImagesByLanguage(lang) {
+		// Define o sufixo da imagem. Se for 'en' ou 'es', utiliza '_en'. Caso contrário, usa '_pt'.
+		const targetSuffix = (lang === 'en' || lang === 'es') ? 'en' : 'pt';
+
+		document.querySelectorAll('.screenshot-grid img').forEach(img => {
+			// A RegEx captura o sufixo atual (_pt, _en ou _es) e substitui pelo sufixo alvo (pt ou en)
+			img.src = img.src.replace(/_(pt|en|es)(\.(png|jpg|jpeg|webp))/i, `_${targetSuffix}$2`);
 		});
 	}	
 
